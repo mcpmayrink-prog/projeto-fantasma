@@ -1,25 +1,255 @@
 ---
 # Nome do arquivo PDF gerado na pasta resultado
-output-file: "Entrega 1 - Gustavo"
+output-file: "Entrega 1 - Maria Clara"
 ---
 
-```{r setup}
-#| include: false
-source("rdocs/entrega_1.R")
-```
 
-# Análises
+# Introdução 
+ Este relatório foi feito para um melhor entendimennto sobre a receita total média,
+uma variável quantitativa discreta, das 18 lojas nos períodos entre 1880 e 1889.
+ Em primeiro lugar todas as planihas mandadas por Excel foram unificadas em uma 
+única variável em formato de data frame chamada "relatório". Em seguida as colunas de 
+interesse, que nesse caso foram - ItemID, UnityPrice, Quantity e StoreId- foram selecionadas 
+e separadas por ano, e assim foram criadas dez novas variáveis, uma para cada ano, 
+de nome "anos(ano de interesse)". 
+ Finalmente, foram criadas outras dez variavéis que continham a média das lojas de
+cada ano, de nome "media(ano de interesse)". Então foram feitos gráficos para cada 
+uma das 18 lojas para melhor análise da receita média ao longo dos 10 anos avaliados.
 
-## Análise tal
 
-Introdução da análise
-
+#Gráfico 1
 ```{r}
 #| label: fig-g1
-#| fig-cap: "Gráfico de barras teste "
+#| fig-cap: "Gráfico de linha Ano/ L1"
+#| include: false
+
+source("rdocs/entrega_1.R")
 g1
 ```
+#Análise 1 
+O gráfico 1 nos mostra que, de modo geral, houve um crescimento na receita da loja 
+1 ao longo dos anos, tendo seu ápice no ano de 1888.
 
-descritiva $\ref{fig-g1}$ volta pra figura
+#Gráfico 2
+```{r}
+#| label: fig-g2
+#| fig-cap: "Gráfico de linha Ano/L2 "
+#| include: false
 
+source("rdocs/entrega_1.R")
+g2
+```
+#Análise 2
+O gráfico 2 nos mostra que, de modo geral, houve uma baixa na receita da loja 
+2 ao longo dos anos, tendo seu mínimo no ano de 1886
+
+#Gráfico 3
+```{r}
+#| label: fig-g3
+#| fig-cap: "Gráfico de linha Ano/ L3"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g3
+```
+#Análise 3
+O gráfico 3 nos mostra que, de modo geral, houve uma leve baixa na receita da loja 
+3 ao longo dos anos, porém apresentando um alto crescimento de 1883 a 1885- seu ápice- e, logo em seguida, uma queda brusca entre 1885 e 1886- seu mínimo.
+
+#Grafico 4
+```{r}
+#| label: fig-g4
+#| fig-cap: "Gráfico de linha Ano/ L4"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g4
+```
+#Análise 4
+O gráfico 4 nos mostra que, de modo geral,a receita da loja 
+4 se manteve ao longo dos anos,não variando muito a receita de 1880 e de 1889,porém apresentando uma queda significativa de 1882 a 1884 e 1886 a 1888 e um grande crescimento de 1884 a 1886- seu ápice.
+#Gráfico 5
+```{r}
+#| label: fig-g5
+#| fig-cap: "Gráfico de linha Ano/ L5"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g5
+```
+#Análise 5
+O gráfico 5 nos mostra que, de modo geral, houve um crescimento na receita da loja 
+5 ao longo dos anos, tendo seu ápice no ano de 1889.
+
+#Gráfico 6
+```{r}
+#| label: fig-g6
+#| fig-cap: "Gráfico de linha Ano/ L6"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g6
+```
+#Análise 6
+O gráfico 6 nos mostra que, de modo geral, houve uma baixa na receita da loja 
+6 ao longo dos anos,sendo decrescente de 1880 a 1882- seu mínimo, crescente de 1882 a 1886- seu ápice -, e novamente decrescente de 1886 a 1889- segunda menor receita.
+
+#Gráfico 7
+```{r}
+#| label: fig-g7
+#| fig-cap: "Gráfico de linha Ano/ L7"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g7
+```
+# Análise 7
+O gráfico 7 nos mostra que, de modo geral, houve um crescimento na receita da loja 
+7 ao longo dos anos, apresentando uma grande queda de 1882 a 1885- seu mínimo - e entre 1886 e 1887, porém um significativo aumento entre 1885 e 1886 e novamente entre 1887 e 1888- seu ápice.
+
+#Gráfico 8
+```{r}
+#| label: fig-g8
+#| fig-cap: "Gráfico de linha Ano/ L8"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g8
+```
+#Análise 8
+O gráfico 8 nos mostra que, de modo geral, houve uma queda na receita da loja 
+8 ao longo dos anos, apresentando quedas significativas entre os anos de 1880 e 1881, 1883 e 1885- seu mínimo-, 1887 e 1889- segunda menor receita.
+
+#Gráfico 9
+```{r}
+#| label: fig-g9
+#| fig-cap: "Gráfico de linha Ano/ L9"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g9
+```
+#Análise 9 
+O gráfico 9 nos mostra que, de modo geral, houve uma grande queda na receita da loja 
+9 ao longo dos anos, apresentando duas significas baixas muito parecidas nos anos de 1880 a 1882- seu mínimo- e 1888 e 1889- segunda menor receita.
+
+#Gráfico 10
+```{r}
+#| label: fig-g10
+#| fig-cap: "Gráfico de linha Ano/ L10"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g10
+```
+#Análise 10 
+O gráfico 10 nos mostra que, de modo geral, houve uma baixa na receita da loja 
+10 ao longo dos anos, apresentando uma significativa queda entre 1886- seu ápice- e 1888- seu mínimo.
+
+#Gráfico 11
+```{r}
+#| label: fig-g11
+#| fig-cap: "Gráfico de linha Ano/ L11"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g11
+```
+#Análise 11
+O gráfico 11 nos mostra que, de modo geral, houve uma queda na receita da loja 
+11 ao longo dos anos,tendo seu ápice no ano de 1881 e seu mínimo em 1888.
+
+#Gráfico 12
+```{r}
+#| label: fig-g12
+#| fig-cap: "Gráfico de linha Ano/ L12"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g12
+```
+#Análise 12 
+O gráfico 12 nos mostra que, de modo geral, houve um leve crescimento na receita da loja 
+12 ao longo dos anos,apresentando significativos aumentos de 1882- seu mínimo- a 1883 e 1884 a 1885- seu ápice-, porém uma queda nos anos seguintes.
+
+#Gráfico 13
+```{r}
+#| label: fig-g13
+#| fig-cap: "Gráfico de linha Ano/ L13"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g13
+```
+#Análise 13 
+O gráfico 13 nos mostra que, de modo geral, houve uma queda na receita da loja 
+13 ao longo dos anos, não apresentando crescimentos muito significatvos, tendo seu ápice no ano de 1880 e seu mínimo em 1886.
+
+#Gráfico 14
+```{r}
+#| label: fig-g14
+#| fig-cap: "Gráfico de linha Ano/ L14"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g14
+```
+#Análise 14
+O gráfico 14 nos mostra que, de modo geral, houve um leve crescimento na receita da loja 
+14 ao longo dos anos, apresentando uma significativa queda entre 1880 e 1882- seu mínimo-, com seu ápice em 1889 mas nao variando muito da receita de 1880.
+
+#Gráfico 15
+```{r}
+#| label: fig-g15
+#| fig-cap: "Gráfico de linha Ano/ L15"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g15
+
+```
+# Análise 15
+O gráfico 15 nos mostra que, de modo geral, houve um crescimento na receita da loja 
+15 ao longo dos anos, apresentando um significativo aumento de 1881 a 1883- seu ápice-, porém logo em seguinda uma grande queda de 1883 a 1885 e depois, novamente, um crescimento de 1887 a 1888.
+
+#Gráfico 16
+```{r}
+#| label: fig-g16
+#| fig-cap: "Gráfico de linha Ano/ L16"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g16
+```
+#Análise 16
+O gráfico 16 nos mostra que, de modo geral, houve uma queda na receita da loja 
+16 ao longo dos anos, apresentando um grande crescimentp de 1887 a 1888- seu ápice-, porem decaindo de 1888 a 1889- seu mínimo.
+
+
+#Gráfico 17
+```{r}
+#| label: fig-g17
+#| fig-cap: "Gráfico de linha Ano/ L17"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g17
+```
+#Análise 17
+O gráfico 17 nos mostra que, de modo geral, houve um crescimento na receita da loja 
+17 ao longo dos anos, apresentando um significativo crescimento de 1886 a 1888- seu ápice.
+
+
+#Gráfico 18
+```{r}
+#| label: fig-g18
+#| fig-cap: "Gráfico de linha Ano/ L18"
+#| include: false
+
+source("rdocs/entrega_1.R")
+g18
+```
+# Análise 18
+O gráfico 18 nos mostra que, de modo geral, houve uma queda na receita da loja 
+18 ao longo dos anos,apresentando significativas qiedas nos anos de 1880 a 1881 e 1885 a 1888- seu mínimo.
 
