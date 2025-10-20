@@ -1,75 +1,39 @@
 ---
-# Nome do arquivo PDF gerado na pasta resultado
-output-file: "Entrega 2"
+# Análise 2
+output-file: "Entrega 2 - Maria Clara"
 ---
 
 ```{r setup}
 #| include: false
+library(readxl)
+relatorio_old_town_road_5_ <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road (5).xlsx", 
+                                         sheet = "infos_clientes")
 source("rdocs/entrega_2.R")
 ```
 
 
-```{r}
-# Rodar apenas uma vez na vida!
-## Instalando o tinytex(pacote apenas)
-### CRAN version
-install.packages('tinytex')
-
-
-## Baixando o tinytex
-library(tinytex)
-tinytex::install_tinytex()
-```
-
-# Objetivo
-
-Esse template foi criado para o alocado conseguir observar como ficaria sua análise o arquivo principal. É daqui que o gerente de projetos irá copiar a análise e inserir no documento principal que gerará o relatório estatístico.
 
 # Análises
 
-## Análise 3
+## Introdução da Análise
+O objetivo dessa análise é avaliar a variçao peso por altura. À medida que o peso aumenta, a altura também aumenta ou diminui?
 
-## Análise 4
+### Descritiva
+A dispersão do gráfico nos mostra que, de fato, à medida que o peso aumenta, a altura também aumenta. A linha azul, que indica a média das alturas de determinado peso, também favorece na visualizacão desse fenômeno.
+
+
 
 ```{r}
-#| label: fig-
-#| fig-cap: "Gráfico "
+#| label: fig-graf
+#| fig-cap: "Gráfico de Ponto Peso/Altura "
+#| include: true 
 
-
-
-```
-
-
-::: {#quad- layout-align="center" quad-pos="H"}
-```{=latex}
-
-
-
-```
-
-Medidas resumo da 
-:::
-
-
-
-::: {#tbl-modalidades layout-align="center" tbl-pos="H"}
-```{=latex}
+graf
 
 
 ```
 
 
-:::
-
-
-
-
-$\ref{fig-}$
-
-[@tbl-]
-
-
-[**Quadro** @quad-]
 
 
 
