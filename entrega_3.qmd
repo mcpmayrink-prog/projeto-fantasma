@@ -1,10 +1,24 @@
 ---
-# Nome do arquivo PDF gerado na pasta resultado
+# Análise 3
 output-file: "Entrega 3"
 ---
 
 ```{r setup}
 #| include: false
+
+library(readxl)
+relatorio_old_town_road_4_ <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road (4).xlsx", 
+                                         sheet = "relatorio_vendas")
+
+
+library(readxl)
+relatorio_old_town_road_5_ <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road (5).xlsx", 
+                                         sheet = "infos_clientes")
+
+
+library(readxl)
+relatorio_old_town_road_6_ <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road (6).xlsx", 
+                                         sheet = "infos_lojas")
 source("rdocs/entrega_3.R")
 ```
 
@@ -17,46 +31,87 @@ install.packages('tinytex')
 
 ## Baixando o tinytex
 library(tinytex)
-tinytex::install_tinytex()
+tinytex::install_tinytex(force = TRUE)
 ```
 
 
 
 
-# Objetivo
 
-Esse template foi criado para o alocado conseguir observar como ficaria sua análise o arquivo principal. É daqui que o gerente de projetos irá copiar a análise e inserir no documento principal que gerará o relatório estatístico.
 
 # Análises
 
-## Análise 5
+## Idade dos Clientes das lojas de Âmbar Seco
 
-## Análise 6
+### Introdução da Análise
+O objetivo dessa análise é entender melhor o perfil das idades, uma variável quantitiva discreta, dos clientes das 4 lojas-Banco Careca, Ferraria Seca, Saloon e Vendinha Rápida- da cidade de Âmbar Seco. As idades, contando todas as lojas, estão no intervalo [15,80].
+
 
 ```{r}
-#| label: fig-
-#| fig-cap: "Gráfico "
+#| label: fig-graf_idade_cliente
+#| fig-cap: "Gráfico do tipo histograma da idade dos clientes por loja"
+#| include: true
+
+graf_idade_cliente
 
 
 
 ```
 
 
-::: {#quad- layout-align="center" quad-pos="H"}
-```{=latex}
 
 
-
-```
-
-Medidas resumo da 
+Medidas resumo das idades dos clientes das lojas de Âmbar Seco
 :::
 
 
 
 ::: {#tbl-modalidades layout-align="center" tbl-pos="H"}
 ```{=latex}
-
+ \t\\begin{tabular}{", sep="")
+   col_count <- ncol(data)
+   row_count <- nrow(data)
+   latex <- str_c(latex, "| l |\n", sep=" ")
+   for (i in seq(2, col_count))
+   {
+     numCount <- data[i, -c(1)] %>%
+       as.numeric() %>%
+       {floor(log10(.)) + 1} %>%max()
+     latex <- str_c(latex, "\t\t\tS[table-format = ", numCount ,".2]\n
+ ", sep="")
+   }
+   
+   latex <- str_c(latex, "\t\t\t|}\n\t\\toprule\n\t\t", sep="")
+   if (col_count > 2)
+   {
+     for (i in seq(1,col_count))
+     {
+       if (i == 1)
+         latex <- str_c(latex, "\\textbf{Estatística}", sep="")
+       else
+         latex <- str_c(latex, " \\textbf{", data[1, i], "}", sep="")
+       if (i < col_count)
+         latex <- str_c(latex, "&", sep=" ")
+       else
+         latex <- str_c(latex, "\\\\\n", sep=" ")
+     }
+   }
+   else
+   {
+     latex <- str_c(latex, "\\textbf{Estatística} & \\textbf{Valor}
+ \\\\\n", sep="")
+   }
+   latex <- str_c(latex, "\t\t\\midrule\n", sep="")
+   if (col_count > 2)
+     starting_number <- 2
+   else
+     starting_number <- 1
+   for (i in seq(starting_number, row_count))
+   {
+     latex <- str_c(latex, "\t\t", str_flatten(t(data[i,]), collapse =
+                                                 " & "), " \\\\\n")
+   }
+   latex <- str_c(latex, "\t\\bottomrule\t\\end{tabular}
 
 ```
 
@@ -65,15 +120,8 @@ Medidas resumo da
 
 
 
-
-$\ref{fig-}$
-
-[@tbl-]
-
-
-[**Quadro** @quad-]
-
-
+### Descritiva
+O histograma mostra que na loja Banco Careca o intervalo de idades dos cliente é [15,50], com sua maior clientela apresentando de 30 a 40 e sua menor de 25 a 30 anos. Já a loja Ferraria Seca apresenta um maior intervalo de idade, sendo esse [15,80], com sua maior parte de clientes entre seus 20 anos e sua menor parte entre 55 e 60 anos. A loja Saloon apresenta um intervalo, assim como Ferraria Seca, de [15,80], porém com sua maioria entre 25 e 30 anos e sua minoria entre seus 70 anos. Finalmente, a loja Vendinha Rápida tem um intervalo de idade de [25,55], com sua maior parte de cliente se concentrando em 40 a 45 anos e sua menor se concentrando em 25 a 30 anos.
 
 
 
