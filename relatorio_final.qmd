@@ -113,8 +113,8 @@ Vale ressaltar que o coeficiente de Pearson é paramétrico e, portanto, sensív
 ## Médias das lojas por ano
 
 ### Introdução 
- Este relatório foi feito para um melhor entendimennto sobre a receita total média,
-uma variável quantitativa contínua, das lojas nos períodos entre 1880 e 1889. Os valores das receitas estão no intervalo [19.600, 21.500].
+ Este relatório foi feito para um melhor entendimento sobre a receita total média,
+uma variável quantitativa contínua, das lojas nos períodos entre 1880 e 1889. Os valores das receitas estão no intervalo [19.600, 21.500] e foram obtidos pela multiplicação das quantidades pelo valor, dividido pela soma das quantidades dos produtos. O valor também foi convertido de dólares para reais, sendo multiplicado por 5,31.
 
 
 
@@ -127,13 +127,13 @@ source("rdocs/entrega_1.R")
 graf_medias
 ```
 ### Descritiva  
-O gráfico mostra um ápice do ano de 1880, com uma média de aproximadamente 21.500,  e um mínimo em 1882, com aproximadamente 19.600. Ao longo dos anos há aumentos e quedas na média, no entanto nenhum ano passa a média de 1880, terminando a análise em 1889 com cerca de 20.250 de receita.
+O gráfico $\ref{fig-graf_medias}$ mostra um ápice do ano de 1880, com uma média de aproximadamente 21.500,  e um mínimo em 1882, com aproximadamente 19.600. Ao longo dos anos há aumentos e quedas na média, no entanto nenhum ano passa a média de 1880, terminando a análise em 1889 com cerca de 20.250 de receita.
 
 
 ## Variação do Peso e Altura dos Clientes
 
 ### Introdução da Análise
-O objetivo dessa análise é avaliar a variaçao peso por altura, que são variáveis quantitativas contínuas. O peso, eixo Y,está no intervalo [45,120] e a altura, eixo X, está no intervalo[150,200]. À medida que o peso aumenta, a altura também aumenta ou diminui?
+O objetivo dessa análise é avaliar a variação peso por altura, que são variáveis quantitativas contínuas. O peso, eixo Y,está no intervalo [45,120] e a altura, eixo X, está no intervalo[150,200].Além disso, os valores dos dados foram transformados, o peso foi de libras para kilogramas e a altura foi de decímetros para centímetros.
 
 
 
@@ -150,7 +150,7 @@ graf
 
 
 
-::: {#quad- layout-align="center" quad-pos="H"}
+::: {#quad-1 layout-align="center" quad-pos="H"}
 ```{=latex}
 \begin{tabular} { | l |
 			S[table-format = 2.2]
@@ -172,7 +172,7 @@ graf
 Medidas resumo dos pesos dos clientes 
 :::
 
-::: {#quad- layout-align="center" quad-pos="H"}
+::: {#quad-2 layout-align="center" quad-pos="H"}
 ```{=latex}
 \begin{tabular} { | l |
 			S[table-format = 1.2]
@@ -195,7 +195,7 @@ Medidas resumo das alturas dos clientes
 :::
 
 ### Descritiva
-A dispersão do gráfico mostra que à medida que o peso aumenta, a altura também aumenta, visto que essa dispersão se comporta quase que linearmente.Isso também é visualizado no  resultado da correlação de Pearson, que mede a força(quanto mais perto de +1 ou -1 mais forte) e direção(se as duas aumentam ou dimunuem) da relação linear de duas variáveis, dessas variáveis. O resultado - 0,69 - indica que quando o peso ou altura aumentam, o outro aumentam também. Pelo quadros é possível perceber que suas médias são justamente onde o gráfico apresenta maior concentração de dados.
+A dispersão do gráfico $\ref{fig-graf}$ mostra que à medida que o peso aumenta, a altura também aumenta, visto que essa dispersão se comporta quase que linearmente. Isso também é visualizado no  resultado da correlação de Pearson, que mede a força(quanto mais perto de +1 ou -1 mais forte) e direção(se as duas aumentam ou dimunuem) da relação linear de duas variáveis, dessas variáveis. O resultado - 0,69 - indica que quando o peso ou altura aumentam, o outro aumenta também. Pelos quadros [**Quadro** @quad-1] e [**Quadro** @quad-2] é possível perceber que suas médias são justamente onde o gráfico apresenta maior concentração de dados.
 
 ## Idade dos Clientes das lojas de Âmbar Seco
 
@@ -263,3 +263,5 @@ O objetivo dessa análise é saber o nome- variável qualitativa nominal- e quan
 ```
 
 # Conclusões
+
+As análises feitas indicam uma maior receita média no ano de 1880, bem como uma existente correlação entre o peso e altura dos clientes, que quando um aumenta, o outro também aumenta. Além das idades dos clientes, mais especificamente dos que compram em Âmbar Seco, sugerirem uma grande amplitude da clientela.

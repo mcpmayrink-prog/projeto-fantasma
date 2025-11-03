@@ -99,3 +99,24 @@ top_3_produtos_17 = top_3_produtos_17 %>%
   slice_max(Quantidades, n = 3)
 top_3_produtos_17$NomeProduto = c("Chapéu de Couro","Colt .45", "Sela" )
 
+# Fazendo gráficos 
+
+receitas <- top_3_receitas %>%
+  filter(!is.na(Receitas)) %>%
+  count(Receitas) %>%
+  mutate(
+    freq = n,
+    relative_freq = round((freq / sum(freq)) * 100, 1),
+    freq = gsub("\\.", ",", relative_freq) %>% paste("%", sep = ""),
+    label = str_c(n, " (", freq, ")") %>% str_squish()
+  )
+graf_receitas = ggplot(receitas) +   
+  aes(x = fct_reorder(receitas$Receitas, n, .desc=T), y = n, label = label) +
+  geom_bar(stat = "identity", fill = "#A11D21", width = 0.7) +
+  geom_text(
+    position = position_dodge(width = .9),
+    vjust = -0.5, #hjust = .5,
+    size = 3
+  ) +
+  labs(x = "Nome das lojas", y = "Frequência") +
+  theme_estat()
