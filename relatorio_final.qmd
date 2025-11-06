@@ -256,10 +256,13 @@ O histograma mostra que na loja Banco Careca o intervalo de idades dos cliente �
 ### Introdução da Análise
 O objetivo dessa análise é saber o nome- variável qualitativa nominal- e quantidade- variável quantitativa discreta- dos três produtos mais vendidos nas três lojas com as maiores receitas- variável quantitativa contínua- de 1889. Os valores das receitas estão no intervalo [270.000, 237.000] e as quantidades estão no intervalo [420,288].
 
-::: {#quad- layout-align="center" quad-pos="H"}
-```{=latex}
- 
+```{r}
+#| label: fig-graf_rel
+#| fig-cap: "Gráfico de coluna Nome da Loja/Frequênis"
+#| include: true
 
+source("rdocs/entrega_3.R")
+graf_rel
 ```
 
 # Conclusões

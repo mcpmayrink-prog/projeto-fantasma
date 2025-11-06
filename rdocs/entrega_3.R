@@ -100,23 +100,59 @@ top_3_produtos_17 = top_3_produtos_17 %>%
 top_3_produtos_17$NomeProduto = c("Chapéu de Couro","Colt .45", "Sela" )
 
 # Fazendo gráficos 
+relatorio_old_town_road <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road.xlsx", 
+                                      sheet = "infos_produtos")
 
-receitas <- top_3_receitas %>%
-  filter(!is.na(Receitas)) %>%
-  count(Receitas) %>%
+relatorio_old_town_road_1_ <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road (1).xlsx", 
+                                         sheet = "infos_vendas")
+
+
+relatorio_old_town_road_4_ <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road (4).xlsx", 
+                                         sheet = "relatorio_vendas")
+
+relatorio_old_town_road_6_ <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road (6).xlsx", 
+                                         sheet = "infos_lojas")
+relatorio4  = left_join(relatorio_old_town_road, relatorio_old_town_road_1_, by = "ItemID") 
+relatorio4  = left_join(relatorio4, relatorio_old_town_road_4_, by = "SaleID")
+relatorio4  = left_join(relatorio4, relatorio_old_town_road_6_, by = "StoreID")
+
+top_3 = relatorio4 %>%
+  select(NameStore, Quantity, NameProduct, StoreID,UnityPrice,Date)%>%
+  group_by(StoreID, NameStore, NameProduct)%>%
+  filter(str_starts(Date, "1889"))%>%
+  mutate(UnityPrice = UnityPrice*5.31, Receita = UnityPrice*Quantity)%>%
+  summarise(Receita = sum(Receita))
+top_3 %>%
+  ungroup()%>%
+  group_by(StoreID)%>%
+  summarise(rec = sum(Receita))%>%
+  arrange(desc(rec))
+top_3 = top_3 %>%
+  
+  ungroup()
+
+rel <- relatorio4 %>%
+  filter(StoreID %in% c(7,5,17))%>%
+  group_by(NameStore, NameProduct) %>%
+  summarise(freq = n()) %>%
   mutate(
-    freq = n,
-    relative_freq = round((freq / sum(freq)) * 100, 1),
-    freq = gsub("\\.", ",", relative_freq) %>% paste("%", sep = ""),
-    label = str_c(n, " (", freq, ")") %>% str_squish()
-  )
-graf_receitas = ggplot(receitas) +   
-  aes(x = fct_reorder(receitas$Receitas, n, .desc=T), y = n, label = label) +
-  geom_bar(stat = "identity", fill = "#A11D21", width = 0.7) +
+    freq_relativa = round(freq / sum(freq) * 100,1)
+  )%>%
+  arrange(desc(freq))%>%
+  slice_max(freq, n = 3)
+porcentagens <- str_c(rel$freq_relativa, "%") %>% str_replace("\\.", ",")
+legendas <- str_squish(str_c(rel$freq, " (", porcentagens, ")"))
+graf_rel = ggplot(rel) +
+  aes(
+    x = fct_reorder(rel$NameStore, freq, .desc = T), y = freq,
+    fill = NameProduct, label = legendas
+  ) +
+  geom_col(position = position_dodge2(preserve = "single", padding =
+                                        0)) +
   geom_text(
     position = position_dodge(width = .9),
-    vjust = -0.5, #hjust = .5,
-    size = 3
-  ) +
-  labs(x = "Nome das lojas", y = "Frequência") +
+    vjust = -0.5, hjust = 0.5,
+    size = 3) +
+  labs(x = "Nome da Loja", y = "Frequência", fill = "Nome do Produto") +
   theme_estat()
+
