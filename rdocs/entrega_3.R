@@ -56,10 +56,17 @@ graf_idade_cliente = ggplot(idade_cliente) +
   theme_estat(
     strip.text = element_text(size = 12),
     strip.background = element_rect(colour = "black", fill = "white")
-  )
+  ) #apagar
 idade_cliente %>%
   print_quadro_resumo(Age)
 
+graf_idade_cliente = ggplot(idade_cliente) +
+  aes(x = reorder(NameStore, Age, FUN = median), y = Age) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white") +
+  labs(x = "Nome das Lojas", y = "Idades dos Clientes") +
+  theme_estat()
 
 
 # Análise 4
@@ -97,7 +104,7 @@ top_3_produtos_17 = produtos %>%
 names(top_3_produtos_17)[c(2)] = c("Quantidades")
 top_3_produtos_17 = top_3_produtos_17 %>%
   slice_max(Quantidades, n = 3)
-top_3_produtos_17$NomeProduto = c("Chapéu de Couro","Colt .45", "Sela" )
+top_3_produtos_17$NomeProduto = c("Chapéu de Couro","Colt .45", "Sela" ) #apagar
 
 # Fazendo gráficos 
 relatorio_old_town_road <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road.xlsx", 
@@ -128,7 +135,7 @@ top_3 %>%
   summarise(rec = sum(Receita))%>%
   arrange(desc(rec))
 top_3 = top_3 %>%
-  
+  filter(StoreID %in% c(7,5,17))%>%
   ungroup()
 
 rel <- relatorio4 %>%
@@ -155,4 +162,3 @@ graf_rel = ggplot(rel) +
     size = 3) +
   labs(x = "Nome da Loja", y = "Frequência", fill = "Nome do Produto") +
   theme_estat()
-

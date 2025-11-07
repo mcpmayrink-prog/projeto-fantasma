@@ -205,7 +205,7 @@ O objetivo dessa análise é entender melhor o perfil das idades, uma variável 
 
 ```{r}
 #| label: fig-graf_idade_cliente
-#| fig-cap: "Gráfico do tipo histograma da idade dos clientes por loja"
+#| fig-cap: "Gráfico do tipo boxplot da idade dos clientes por loja"
 #| include: true
 
 graf_idade_cliente
@@ -217,11 +217,7 @@ graf_idade_cliente
 
 
 
-
-
-
-
-::: {#quad- layout-align="center" quad-pos="H"}
+::: {#quad-3 layout-align="center" quad-pos="H"}
 ```{=latex}
  \begin{tabular} { | l |
 			S[table-format = 2.2]
@@ -249,12 +245,14 @@ Medidas resumo das idades dos clientes das lojas de Âmbar Seco
 
 
 ### Descritiva
-O histograma mostra que na loja Banco Careca o intervalo de idades dos cliente é [15,50], com sua maior clientela apresentando de 30 a 40 e sua menor de 25 a 30 anos. Já a loja Ferraria Seca apresenta um maior intervalo de idade, sendo esse [15,80], com sua maior parte de clientes entre seus 20 anos e sua menor parte entre 55 e 60 anos. A loja Saloon apresenta um intervalo, assim como Ferraria Seca, de [15,80], porém com sua maioria entre 25 e 30 anos e sua minoria entre seus 70 anos. Finalmente, a loja Vendinha Rápida tem um intervalo de idade de [25,55], com sua maior parte de cliente se concentrando em 40 a 45 anos e sua menor se concentrando em 25 a 30 anos.
+O boxplot $\ref{fig-graf_idade_cliente}$ mostra que na loja Banco Careca o intervalo de idades dos cliente é [25,45], com sua maior clientela apresentando de 30 a 40 e sua menor de 25 a 30 e de 40 a 45 anos. Já a loja Ferraria Seca apresenta um maior intervalo de idade, sendo esse [15,80], com sua maior parte de clientes entre seus 30 anos e sua menor parte a partir dos 60 anos, quando o boxplot mostra mais valores discrepantes(outliers). A loja Saloon apresenta um intervalo, assim como Ferraria Seca, de [15,80], porém com sua maioria entre 30 anos e sua minoria a partir dos 55 anos, apresentando outliers depois dessa idade. Finalmente, a loja Vendinha Rápida tem um intervalo de idade de [30,50], com sua maior parte de cliente se concentrando entre seus 40 anos.
+Já o quadro [**Quadro** @quad-3] traz uma análise geral das idades dos clientes, sem a separação por loja. Ele indica que a média de idade é 35,89 anos, com um desvio padrão de 10, 46, ou seja, a maior parte dos clientes tem idades entre 25,43 e 46,35 anos.
+
 
 ## Top 3 produtos das top 3 lojas de maior receita em 1889
 
 ### Introdução da Análise
-O objetivo dessa análise é saber o nome- variável qualitativa nominal- e quantidade- variável quantitativa discreta- dos três produtos mais vendidos nas três lojas com as maiores receitas- variável quantitativa contínua- de 1889. Os valores das receitas estão no intervalo [270.000, 237.000] e as quantidades estão no intervalo [420,288].
+O objetivo dessa análise é saber o nome- variável qualitativa nominal- e quantidade- variável quantitativa discreta- dos três produtos mais vendidos nas três lojas com as maiores receitas- variável quantitativa contínua- de 1889. Os valores das frequências dos produtos estão no intervalo [128,149].
 
 ```{r}
 #| label: fig-graf_rel
@@ -265,6 +263,11 @@ source("rdocs/entrega_3.R")
 graf_rel
 ```
 
+
+### Descritiva
+O gráfico $\ref{fig-graf_rel}$ indica que as lojas com as três maiores receitas de 1889 são Ferraria Apache, Loja Ouro Fino e Loja TendTudo. Além disso, nota-se os principais produtos vendidos em cada loja. No caso da Ferraria Apache, seus produtos mais procurados são, em ordem, Cavalo(11,4%) , Chapéu de Couro(11,2%) e Colt.45(10,3%). Na Loja Ouro Fino, o Colt.45(11,6%) é o mais buscado, seguido pelo Whisky(10,4%) e pela Pá(10,3%). Já a Loja TendTudo tem como seu protagonista de vendas o Cavalo(11,4%), depois a Espingarda(10,8%) e o Colt.45(10,5%)
+
+
 # Conclusões
 
-As análises feitas indicam uma maior receita média no ano de 1880, bem como uma existente correlação entre o peso e altura dos clientes, que quando um aumenta, o outro também aumenta. Além das idades dos clientes, mais especificamente dos que compram em Âmbar Seco, sugerirem uma grande amplitude da clientela.
+As análises feitas indicam uma maior receita média no ano de 1880, bem como uma existente correlação entre o peso e altura dos clientes, que quando um aumenta, o outro também aumenta. Além das idades dos clientes, mais especificamente dos que compram em Âmbar Seco, sugerirem uma grande amplitude da clientela. A análise dos principais produtos vendidos nas três lojas com maior receita de 1889 também mostra uma diversidade nas compras, visto que dos 10 produtos ofertados, 6 são os mais procurados.
