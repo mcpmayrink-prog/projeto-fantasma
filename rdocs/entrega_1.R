@@ -105,7 +105,7 @@ anos1881 = relatorio %>%
   select(ItemID, UnityPrice,Quantity,StoreID )
 media1881 = anos1881 %>%
   group_by(StoreID) %>%
-  summarise(mean(UnityPrice*Quantity))
+  summarise(mean(UnityPrice*Quantity)) 
 
 # Ano 1882
 anos1882 = relatorio %>%
