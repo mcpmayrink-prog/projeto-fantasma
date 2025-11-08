@@ -71,42 +71,6 @@ graf_idade_cliente = ggplot(idade_cliente) +
 
 # Análise 4
 
-top_3_receitas = as.data.frame(c(media1889)) ##feito na entrega_1.R
-top_3_receitas = top_3_receitas %>%
-  slice_max(top_3_receitas$Receitas, n = 3)
-produtos = left_join(relatorio_old_town_road_1_, relatorio_old_town_road_4_, by = "SaleID") %>%
-  select(ItemID,Quantity, StoreID) %>%
-  filter(StoreID %in% c(5,14,17)) 
-top_3_receitas$NomeLoja = c("Loja TendTudo", "Ferraria Martelo de Ferro", "Ferraria Apache")
-
-top_3_produtos_5 = produtos %>%
-  group_by(ItemID) %>%
-  filter(StoreID == 5) %>%
-  summarise(sum(Quantity)) 
-names(top_3_produtos_5)[c(2)] = c("Quantidades")
-top_3_produtos_5 = top_3_produtos_5 %>%
-  slice_max(Quantidades, n = 3)
-top_3_produtos_5$NomeProduto = c("Chapéu de Couro", "Colt .45", "Espingarda")
-
-top_3_produtos_14 = produtos %>%
-  group_by(ItemID) %>%
-  filter(StoreID == 14) %>%
-  summarise(sum(Quantity)) 
-names(top_3_produtos_14)[c(2)] = c("Quantidades")
-top_3_produtos_14 = top_3_produtos_14 %>%
-  slice_max(Quantidades, n = 3)
-top_3_produtos_14$NomeProduto = c("Chapéu de Couro","Espingarda", "Pá" )
-
-top_3_produtos_17 = produtos %>%
-  group_by(ItemID) %>%
-  filter(StoreID == 17) %>%
-  summarise(sum(Quantity)) 
-names(top_3_produtos_17)[c(2)] = c("Quantidades")
-top_3_produtos_17 = top_3_produtos_17 %>%
-  slice_max(Quantidades, n = 3)
-top_3_produtos_17$NomeProduto = c("Chapéu de Couro","Colt .45", "Sela" ) #apagar
-
-# Fazendo gráficos 
 relatorio_old_town_road <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road.xlsx", 
                                       sheet = "infos_produtos")
 
@@ -119,6 +83,9 @@ relatorio_old_town_road_4_ <- read_excel("C:/Users/maria clara mayrink/Downloads
 
 relatorio_old_town_road_6_ <- read_excel("C:/Users/maria clara mayrink/Downloads/relatorio_old_town_road (6).xlsx", 
                                          sheet = "infos_lojas")
+names(relatorio_old_town_road)[c(1)] = c("ItemID")
+names(relatorio_old_town_road_1_)[c(1)] = c("SaleID")
+names(relatorio_old_town_road_6_)[c(1)] = c("StoreID")
 relatorio4  = left_join(relatorio_old_town_road, relatorio_old_town_road_1_, by = "ItemID") 
 relatorio4  = left_join(relatorio4, relatorio_old_town_road_4_, by = "SaleID")
 relatorio4  = left_join(relatorio4, relatorio_old_town_road_6_, by = "StoreID")
@@ -140,8 +107,10 @@ top_3 = top_3 %>%
 
 rel <- relatorio4 %>%
   filter(StoreID %in% c(7,5,17))%>%
+  mutate(Date = ymd(Date), Date = format(Date, "%Y"))%>%
+  filter(Date == "1889")%>%
   group_by(NameStore, NameProduct) %>%
-  summarise(freq = n()) %>%
+  summarise(freq = sum(Quantity)) %>%
   mutate(
     freq_relativa = round(freq / sum(freq) * 100,1)
   )%>%
@@ -161,4 +130,4 @@ graf_rel = ggplot(rel) +
     vjust = -0.5, hjust = 0.5,
     size = 3) +
   labs(x = "Nome da Loja", y = "Frequência", fill = "Nome do Produto") +
-  theme_estat()
+  theme_estat() 
