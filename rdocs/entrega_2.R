@@ -37,11 +37,18 @@ relatorio_old_town_road_5_$Height_dm = NULL
 library(tidyverse)
 
 # Fazendo o gráfico Peso/Altura
-graf <- ggplot(relatorio_old_town_road_5_, aes(x = Weight_kls, y = Height_cm)) +
-  geom_point(colour = "#A11D21", size = 2) +
-  geom_smooth(colour = "#003366") +
-  labs(x = "Peso do Cliente (quilogramas)",y = "Altura do Cliente (centímetros)") +
+graf <- ggplot(relatorio_old_town_road_5_, aes(x = Height_cm, y = Weight_kls)) +
+  geom_point(colour = "#A11D21",size = 2, alpha = 0.3) +
+  labs(x = "Altura do Cliente (cm)",y = "Peso do Cliente (kg)") +
   theme_estat()
 
 
-ggsave("disp_uni.pdf", width = 158, height = 93, units = "mm")
+
+# Fazendo os quadros de medidas
+relatorio_old_town_road_5_ %>%
+  print_quadro_resumo(var_name = Weight_kls)
+relatorio_old_town_road_5_ %>%
+  print_quadro_resumo(var_name = Height_cm)
+
+# Calculando a correlação de pearson
+cor(relatorio_old_town_road_5_$Height_cm, relatorio_old_town_road_5_$Weight_kls)

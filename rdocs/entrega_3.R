@@ -48,15 +48,7 @@ names(relatorio_old_town_road_5_)[c(1)] = c("Cli3ntID")
 names(relatorio_old_town_road_6_)[c(1)] = c("Stor3ID")
 
 # Grafico 
-graf_idade_cliente = ggplot(idade_cliente) +
-  aes(x = Age) +
-  geom_histogram(colour = "white", fill = "#A11D21", binwidth = 7) +
-  facet_grid(. ~ NameStore) +
-  labs(x = "Idade dos clientes (anos)", y = "Frequência") +
-  theme_estat(
-    strip.text = element_text(size = 12),
-    strip.background = element_rect(colour = "black", fill = "white")
-  ) #apagar
+
 idade_cliente %>%
   print_quadro_resumo(Age)
 
@@ -128,6 +120,6 @@ graf_rel = ggplot(rel) +
   geom_text(
     position = position_dodge(width = .9),
     vjust = -0.5, hjust = 0.5,
-    size = 3) +
+    size = 2) +
   labs(x = "Nome da Loja", y = "Frequência", fill = "Nome do Produto") +
   theme_estat() 
